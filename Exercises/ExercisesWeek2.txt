@@ -82,3 +82,4 @@ Teht.5 ok
 Teht.6 ok
 Teht.7.ok
 Teht.8 ok
+Teht.9 ok
