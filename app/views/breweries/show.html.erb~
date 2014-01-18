@@ -13,7 +13,7 @@
   <%= @brewery.beers.count %>
 </p>
 <p> <% @brewery.beers.each do |beer| %> 
-    <%= link_to beer.name,beer %>
+    <%= beer.name %>
     <% end %>
 </p>
 
