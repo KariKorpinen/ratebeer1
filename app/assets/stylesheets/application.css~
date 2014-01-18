@@ -13,6 +13,6 @@
  */
 .navibar {
   padding: 10px;
-  background: #EFEFEF;
+  backround: #EFEFEF;
 
 }

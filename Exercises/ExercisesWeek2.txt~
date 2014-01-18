@@ -1,0 +1,15 @@
+Viikko 2 
+----------------------------------------------------
+Teht 1
+
+irb(main):039:0> b=Brewery.new name:"BrewDog",year:2007
+=> #<Brewery id: nil, name: "BrewDog", year: 2007, created_at: nil, updated_at: nil>
+irb(main):040:0> b.save
+   (7.2ms)  begin transaction
+  SQL (4.5ms)  INSERT INTO "breweries" ("created_at", "name", "updated_at", "year") VALUES (?, ?, ?, ?)  [["created_at", Sat, 18 Jan 2014 14:13:06 UTC +00:00], ["name", "BrewDog"], ["updated_at", Sat, 18 Jan 2014 14:13:06 UTC +00:00], ["year", 2007]]
+   (123.5ms)  commit transaction
+=> true
+irb(main):041:0> b.id
+=> 8
+
+-----------------------------------------------------

@@ -11,8 +11,6 @@ Ratebeer::Application.routes.draw do
 
   get 'kaikki_bisset', to: 'beers#index'
 
-  get 'ratings', to: 'ratings#index'
-
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
