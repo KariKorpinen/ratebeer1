@@ -1091,6 +1091,9 @@ irb(main):031:0> orvot.each{|o| o.delete}
 
 heroku = pacific-basin-5153.herokuapp.com
 
+rails s -e production
+
+
 
 
 
