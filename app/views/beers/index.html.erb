@@ -8,17 +8,16 @@
       <th>Brewery</th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @beers.each do |beer| %>
       <tr>
-        <td><%= beer.name %></td>
+        <td><%= link_to beer.name,beer %></td>
         <td><%= beer.style %></td>
-        <td><%= beer.brewery_id %></td>
-        <td><%= link_to 'Show', beer %></td>
+        <% brew = Brewery.find_by_id(beer.brewery_id) %>
+        <td><%= link_to brew.name,brew %></td>
         <td><%= link_to 'Edit', edit_beer_path(beer) %></td>
         <td><%= link_to 'Destroy', beer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
