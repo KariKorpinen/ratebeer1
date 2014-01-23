@@ -1,7 +1,10 @@
 <h2>List of ratings</h2>
-<p>To be completed...</p>
+<p>Number of ratings: <%= @ratings.count %></p>
 <ul>
 <% @ratings.each do |rating| %>
-    <li> <%= rating.score %> </li>
+    <li> <%= rating.to_s %> </li>
   <% end %>
 </ul>
+<br>
+
+<%= link_to 'New Rating', new_rating_path %>

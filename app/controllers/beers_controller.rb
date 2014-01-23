@@ -35,6 +35,7 @@ class BeersController < ApplicationController
         format.json { render json: @beer.errors, status: :unprocessable_entity }
       end
     end
+    redirect_to beers_path
   end
 
   # PATCH/PUT /beers/1
@@ -71,4 +72,6 @@ class BeersController < ApplicationController
     def beer_params
       params.require(:beer).permit(:name, :style, :brewery_id)
     end
+
+    
 end
