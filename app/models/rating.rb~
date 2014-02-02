@@ -1,7 +1,8 @@
 class Rating < ActiveRecord::Base
   belongs_to :beer
+  belongs_to :user  #ratings kuuluu myös käyttäjään
 
-    def to_s
-      "non-string-like"
-    end to_s
+  def to_s
+    "#{beer.name} #{score}"
+  end
 end

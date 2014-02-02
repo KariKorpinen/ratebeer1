@@ -1,23 +1,33 @@
 Ratebeer::Application.routes.draw do
+  resources :users
+
   resources :beers
 
   resources :breweries
+
+  resources :ratings, :only => [:index, :new, :create, :destroy]
+
+  resources :sessions, only: [:new, :create]
+
+  #get 'ratings', to: 'ratings#index'
+  #get 'ratings/new', to:'ratings#new'
+  #post 'ratings', to: 'ratings#create'
+
+  root 'breweries#index'
+
+  get 'kaikki_bisset', to: 'beers#index'
+
+  get 'signup', to: 'users#new'
+
+  get 'signin', to: 'sessions#new'
+
+  get 'signout', to: 'sessions#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'breweries#index'
-
-  get 'kaikki_bisset', to: 'beers#index'
-
-  #get 'ratings', to: 'ratings#index'
-
-  #get 'ratings/new', to:'ratings#new'
-
-  #post 'ratings', to: 'ratings#create'
-  
-  resources :ratings, :only => [:index, :new, :create]
+  #
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,7 +1,12 @@
 <h2>List of ratings</h2>
-<p>To be completed...</p>
+
+<p>Number of ratings <%= @ratings.count %></p>
+
 <ul>
-<% @ratings.each do |rating| %>
-    <li> <%= rating.score %> </li>
+  <% @ratings.each do |rating| %>
+      <li> <%= rating %> <% t = User.find_by(id: rating.user_id) %> <%= link_to t.username ,user_path(t.id) %>  </li>
   <% end %>
 </ul>
+
+<%= link_to 'create new rating', new_rating_path %>
+

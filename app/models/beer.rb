@@ -1,22 +1,13 @@
 class Beer < ActiveRecord::Base
-  belongs_to :brewery
-  has_many :ratings
+  include RatingAverage
 
-  def average_rating
-  	#beer=beer.count
-  	#sum = 0
-  	#maara=0
-    ratings.average('score')
-    
-  	#beer.ratings.each do |c|
-    #  sum += c.score
+	belongs_to :brewery
+  has_many :ratings, dependent: :destroy
+  has_many :raters, -> { uniq }, through: :ratings, source: :user
 
-    #  link_to brewery.name,brewery
-      
-              
-    #beer.name + " " + score.to_s 
-  end
+  validates :name, presence: true
+
   def to_s
-    name + " " + brewery.name 
+    "#{name} #{brewery.name}"
   end
 end

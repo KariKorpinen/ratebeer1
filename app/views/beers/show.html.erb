@@ -12,15 +12,13 @@
 
 <p>
   <strong>Brewery:</strong>
-  <%= @beer.brewery_id %>
-</p>
-<p>
-  <% if @beer.ratings.empty? %>
-    beer has not yet been rated 
-  <% else %>
-    Has <%= pluralize(@beer.ratings.count,'rating') %> , average <%= @beer.average_rating %>
-  <% end %>  
+  <%= @beer.brewery.name %>
 </p>
 
-<%= link_to 'Edit', edit_beer_path(@beer) %> |
-<%= link_to 'Back', beers_path %>
+<% if @beer.ratings.empty? %>
+    <p>beer has not yet been rated! </p>
+<% else %>
+    <p>Has <%= pluralize(@beer.ratings.count,'rating') %>, average <%= @beer.average_rating %> </p>
+<% end %>
+
+<%= link_to 'Edit', edit_beer_path(@beer) %>
