@@ -10,9 +10,8 @@ class RatingsController < ApplicationController
 
   def create
     @rating = Rating.new params.require(:rating).permit(:score, :beer_id)
-    
+
     if @rating.save
-      # tallenetaan tehdyn reittauksen sessioon
       current_user.ratings << @rating
       redirect_to user_path current_user
     else
