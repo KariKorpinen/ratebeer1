@@ -18,7 +18,7 @@ describe Beer do
     #pending "add some examples to (or delete) #{__FILE__}"
   end 
   it "beer dont have style" do
-    beer = Beer.create name:"OlutA"  
+    beer = Beer.new name:"OlutA"  
 
     style2 = Beer.new style:
     beer.style = style2  

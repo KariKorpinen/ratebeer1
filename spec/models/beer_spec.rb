@@ -31,5 +31,17 @@ describe Beer do
     #tapaus,että count on jätetty testistä ja tallennus on tapahtunu aikaisemmin
     expect(Beer.count).to eq(1)
     #pending "add some examples to (or delete) #{__FILE__}"
-  end 
+  end
+  describe "when one beer exists" do
+    let(:beer){FactoryGirl.create(:beer)}
+    
+    it "is valid" do
+      expect(beer).to be_valid
+    end
+
+    it "has the default style" do
+      expect(beer.style).to eq("Lager")
+    end
+  end
+ 
 end

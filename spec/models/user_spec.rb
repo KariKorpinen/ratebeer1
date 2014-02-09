@@ -117,5 +117,12 @@ describe User do
     end
   
   end
+
+  describe "the application" do
+    it "does something with two users" do
+      user1 = FactoryGirl.create(:user)
+      user2 = FactoryGirl.create(:user, username:"Arto")
+      end
+  end
   #pending "add some examples to (or delete) #{__FILE__}"
 end

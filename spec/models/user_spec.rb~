@@ -1,5 +1,5 @@
 require 'spec_helper'
-
+  #
   def create_beer_with_rating(score,user)
     beer = FactoryGirl.create(:beer)
     FactoryGirl.create(:rating, score:score, beer:beer, user:user)
@@ -116,6 +116,13 @@ describe User do
       expect(user.favorite_beer).to eq(best)    
     end
   
+  end
+
+  describe "the application" do
+    it "does something with two users" do
+      user1 = FactoryGirl.create(:user)
+user1 = FactoryGirl.create(:user)
+      end
   end
   #pending "add some examples to (or delete) #{__FILE__}"
 end
