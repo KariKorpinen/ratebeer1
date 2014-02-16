@@ -1,0 +1,12 @@
+<p>
+  <strong>Paikka:</strong>
+  <%= @place.name.to_s  %>
+</p>
+<p>
+  Osoite
+  <% session[:name] %>
+</p>
+<p>
+Kaupunki
+  <%  %>
+</p>
