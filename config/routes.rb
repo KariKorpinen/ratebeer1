@@ -24,4 +24,6 @@ Ratebeer::Application.routes.draw do
 
   root 'breweries#index'
 
+  get 'beerlist', to:'beers#list'
+
 end

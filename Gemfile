@@ -44,6 +44,8 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 # Use unicorn as the app server
 # gem 'unicorn'
 
+gem 'jquery-turbolinks'
+
 group :development, :test do
   gem 'byebug'
 end

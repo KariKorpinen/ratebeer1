@@ -7,6 +7,7 @@ class PlacesController < ApplicationController
   end
 
   def search
+    #byebug
     @places = BeermappingApi.places_in(params[:city])
     session[:previous_city] = params[:city]
     if @places.empty?
