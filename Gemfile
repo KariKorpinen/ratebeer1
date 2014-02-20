@@ -22,7 +22,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
+# gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -41,24 +41,21 @@ end
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.1.2'
 
-gem 'rb-readline'
-
-gem 'httparty'
-
-gem 'rails-settings-cached', '0.3.1'
 # Use unicorn as the app server
 # gem 'unicorn'
 
 group :development, :test do
-  gem 'rspec-rails', '~> 2.14.1'
   gem 'byebug'
 end
 
 group :test do
+  gem 'rspec-rails', '~> 2.14.1'
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'launchy'
-  gem 'simplecov', require: false
   gem 'webmock'
+  gem 'simplecov', require: false
 end
 
+gem 'httparty'
+gem "rails-settings-cached", "0.3.1"

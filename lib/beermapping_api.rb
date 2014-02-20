@@ -1,9 +1,11 @@
 class BeermappingApi
-  #def self.places_in(city)
-  def self.locations_in(city)
+  def self.places_in(city)
     city = city.downcase
-    #Rails.cache.fetch(city, :expires_in => 60.seconds) { fetch_places_in(city)}
-    Rails.cache.fetch(city, :expires_in => 7.days) { fetch_places_in(city)}
+    Rails.cache.fetch(city, expires_in:expiry_time) { fetch_places_in(city) }
+  end
+
+  def self.find(id, city)
+    places_in(city).select{ |p| p.id==id.to_s }.first
   end
 
   private
@@ -23,7 +25,10 @@ class BeermappingApi
   end
 
   def self.key
-    #"234b94ebe8c3dd83310cfb593e652e26"
     Settings.beermapping_apikey
+  end
+
+  def self.expiry_time
+    1.week
   end
 end
