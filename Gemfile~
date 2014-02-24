@@ -41,22 +41,30 @@ end
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.1.2'
 
-gem 'rb-readline'
-
-gem 'httparty'
 # Use unicorn as the app server
 # gem 'unicorn'
 
+gem 'jquery-turbolinks'
+
 group :development, :test do
-  gem 'rspec-rails', '~> 2.14.1'
   gem 'byebug'
 end
 
+gem 'bootstrap-sass'
+group :development do
+  gem 'rails_layout'
+end
+
 group :test do
+  gem 'rspec-rails', '~> 2.14.1'
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'launchy'
-  gem 'simplecov', require: false
   gem 'webmock'
+  gem 'simplecov', require: false
+  gem 'selenium-webdriver'
+  gem 'database_cleaner', '< 1.1.0'
 end
 
+gem 'httparty'
+gem "rails-settings-cached", "0.3.1"

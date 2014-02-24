@@ -15,6 +15,10 @@ Ratebeer::Application.routes.draw do
 
   resources :sessions, :only => [:new, :create, :destroy]
 
+  resources :breweries do
+    post 'toggle_activity', on: :member
+  end
+
   get 'signup', to: 'users#new'
   get 'signin', to: 'sessions#new'
   delete 'signout', to: 'sessions#destroy'
@@ -25,5 +29,8 @@ Ratebeer::Application.routes.draw do
   root 'breweries#index'
 
   get 'beerlist', to:'beers#list'
+  get 'ngbeerlist', to:'beers#nglist'
+
+  get 'ngbrewerylist', to:'breweries#nglist'
 
 end

@@ -2,11 +2,33 @@ class BreweriesController < ApplicationController
   before_action :set_brewery, only: [:show, :edit, :update, :destroy]
   before_action :ensure_that_signed_in, except: [:index, :show]
   before_action :ensure_that_signed_in_as_admin, only: [:destroy]
-
+  #--------------------------------------------------
+  before_action :skip_if_cached, only:[:index]
+  #--------------------------------------------------
   # GET /breweries
   # GET /breweries.json
+   #---------------------------------------------
+  def skip_if_cached
+    #@order = params[:order] || 'name'
+    return render :index if fragment_exist?( "brewerylist-#{params[:order]}" )
+  end
+  #---------------------------------------------
   def index
     @breweries = Brewery.all
+    @active_breweries = Brewery.active
+    @retired_breweries = Brewery.retired
+  end
+
+  def toggle_activity
+    brewery = Brewery.find(params[:id])
+    brewery.update_attribute :active, (not brewery.active)
+
+    new_status = brewery.active? ? "active" : "retired"
+
+    redirect_to :back, notice:"brewery activity status changed to #{new_status}"
+  end
+
+  def nglist
   end
 
   # GET /breweries/1
@@ -26,6 +48,7 @@ class BreweriesController < ApplicationController
   # POST /breweries
   # POST /breweries.json
   def create
+    ["brewerylist-name", "brewerylist-year"].each{ |f| expire_fragment(f)}
     @brewery = Brewery.new(brewery_params)
 
     respond_to do |format|
@@ -42,6 +65,7 @@ class BreweriesController < ApplicationController
   # PATCH/PUT /breweries/1
   # PATCH/PUT /breweries/1.json
   def update
+    ["brewerylist-name", "brewerylist-year"].each{ |f| expire_fragment(f)}
     respond_to do |format|
       if @brewery.update(brewery_params)
         format.html { redirect_to @brewery, notice: 'Brewery was successfully updated.' }
@@ -56,6 +80,7 @@ class BreweriesController < ApplicationController
   # DELETE /breweries/1
   # DELETE /breweries/1.json
   def destroy
+    ["brewerylist-name", "brewerylist-year"].each{ |f| expire_fragment(f)}
     @brewery.destroy
     respond_to do |format|
       format.html { redirect_to breweries_url }
@@ -71,7 +96,7 @@ class BreweriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def brewery_params
-      params.require(:brewery).permit(:name, :year)
+      params.require(:brewery).permit(:name, :year, :active)
     end
 
 end

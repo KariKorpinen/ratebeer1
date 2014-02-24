@@ -22,7 +22,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -46,8 +46,15 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 
 gem 'jquery-turbolinks'
 
+gem 'rack-mini-profiler'
+
 group :development, :test do
   gem 'byebug'
+end
+
+gem 'bootstrap-sass'
+group :development do
+  gem 'rails_layout'
 end
 
 group :test do
@@ -57,6 +64,8 @@ group :test do
   gem 'launchy'
   gem 'webmock'
   gem 'simplecov', require: false
+  gem 'selenium-webdriver'
+  gem 'database_cleaner', '< 1.1.0'
 end
 
 gem 'httparty'
